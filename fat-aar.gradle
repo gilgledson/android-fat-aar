@@ -158,8 +158,8 @@ afterEvaluate {
         embedManifests.dependsOn processReleaseManifest
 
         // Merge proguard files
-        embedLibraryResources.dependsOn embedProguard
-        embedProguard.dependsOn prepareReleaseDependencies
+        // embedLibraryResources.dependsOn embedProguard
+        // embedProguard.dependsOn prepareReleaseDependencies
 
         // Generate R.java files
         compileReleaseJavaWithJavac.dependsOn generateRJava
