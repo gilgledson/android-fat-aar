@@ -63,7 +63,7 @@ configurations {
 }
 
 dependencies {
-    implementation configurations.embedded
+    api configurations.embedded
 }
 
 // Paths to embedded jar files
@@ -138,8 +138,8 @@ afterEvaluate {
         embedAssets.dependsOn prepareReleaseDependencies
 
         // Embed Resources by overwriting the inputResourceSets
-        // packageReleaseResources.dependsOn embedLibraryResources
-        // embedLibraryResources.dependsOn prepareReleaseDependencies
+        packageReleaseResources.dependsOn embedLibraryResources
+        embedLibraryResources.dependsOn prepareReleaseDependencies
 
         // Embed JNI Libraries
         bundleRelease.dependsOn embedJniLibs
@@ -158,8 +158,8 @@ afterEvaluate {
         embedManifests.dependsOn processReleaseManifest
 
         // Merge proguard files
-        // embedLibraryResources.dependsOn embedProguard
-        // embedProguard.dependsOn prepareReleaseDependencies
+        embedLibraryResources.dependsOn embedProguard
+        embedProguard.dependsOn prepareReleaseDependencies
 
         // Generate R.java files
         compileReleaseJavaWithJavac.dependsOn generateRJava
